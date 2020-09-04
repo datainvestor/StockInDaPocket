@@ -101,7 +101,7 @@ export default {
 
       // Lazily load input items
       fetch(
-        "https://finnhub.io/api/v1/stock/symbol?exchange=US&token=bsc1uh7rh5rau11saih0"
+        `https://finnhub.io/api/v1/stock/symbol?exchange=US&token=bsc1uh7rh5rau11saih0`
       )
         .then(res => res.clone().json())
         .then(res => {
