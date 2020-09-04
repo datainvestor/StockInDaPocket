@@ -1,6 +1,6 @@
 <template>
 <v-container>
- <v-card color="blue lighten-2" dark style="max-width: 1200px; margin: 0 auto;">
+ <v-card color="blue lighten-2" dark style="max-width: 1200px; margin: 25px auto;">
     <v-card-title class="headline blue lighten-3">
       <span class="white--text">Search for Company Ticker</span>
     </v-card-title>
@@ -78,6 +78,8 @@
 
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data: () => ({
     isLoading: false,
@@ -112,7 +114,11 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["loadData", "changeStock", "resetData"]),
     calculate () {
+      this.resetData({})
+      this.changeStock(this.model)
+      this.loadData(this.model)
        this.$router.push("abt")
     }
   }

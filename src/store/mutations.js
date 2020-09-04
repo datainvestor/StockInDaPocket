@@ -1,16 +1,12 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import actions from './actions'
-import mutations from './mutations'
-import getters from './getters'
-
-Vue.use(Vuex);
-
-export default new Vuex.Store({
-  state: {
-
+export default {
+  //this is used to pass the request to open advanced search table
+  updateData(state, payload) {
+    state.bigjsondata = payload;
   },
-  mutations: mutations,
-  actions: actions,
-  getters: getters,
-});
+  updateLoading(state, payload) {
+    state.isLoading = payload;
+  },
+  changeStock(state, payload) {
+    state.currentStock = payload;
+  },
+};

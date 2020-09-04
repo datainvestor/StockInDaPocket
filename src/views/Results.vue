@@ -1,7 +1,8 @@
 <template>
   <v-container fill-height fluid>
+    <!-- <v-progress-linear indeterminate color="yellow darken-2"></v-progress-linear> -->
     <v-row justify="center" align="start">
-      <v-col cols="12" md="5" class="d-flex" >
+      <v-col cols="12" md="5" class="d-flex">
         <Finviz></Finviz>
       </v-col>
       <v-col cols="12" md="7">
@@ -12,45 +13,36 @@
     <v-row justify="center" align="start">
       <Estimates></Estimates>
     </v-row>
+
+    <v-overlay :value="overlay">
+      <v-progress-circular indeterminate size="64"></v-progress-circular>
+    </v-overlay>
   </v-container>
 </template>
 
 <script>
-import Finviz from "../components/Finviz"
-import Marketbeat from "../components/Marketbeat"
-import Estimates from "../components/Estimates"
+import Finviz from "../components/Finviz";
+import Marketbeat from "../components/Marketbeat";
+import Estimates from "../components/Estimates";
+import { mapGetters } from "vuex";
 
 export default {
   data: () => ({
-    isLoading: false,
-    items: [],
-    model: null,
-    search: null,
-    tab: null,
-
   }),
-  watch: {
-    model(val) {
-      if (val != null) this.tab = 0;
-      else this.tab = null;
-    },
-    search(val) {
-      // Items have already been loaded
-      if (this.items.length > 0) return;
-
-      this.isLoading = true;
-
-      // Lazily load input items
-      fetch("https://api.coingecko.com/api/v3/coins/list")
-        .then(res => res.clone().json())
-        .then(res => {
-          this.items = res;
-        })
-        .catch(err => {
-          console.log(err);
-        })
-        .finally(() => (this.isLoading = false));
+  computed: {
+    ...mapGetters(["mainJson", "earnings", "finviz", "marketbeat", "tipranks"]),
+    overlay() {
+      if (
+        Object.keys(this.mainJson).length === 0 &&
+        this.mainJson.constructor === Object
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     }
+  },
+  watch: {
   },
   components: {
     Finviz,
