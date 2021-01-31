@@ -3,7 +3,7 @@ name: Development workflow(QA)
 
 # When workflow is triggered
 on:
-  push:
+  pull_request:
     branches:
       - qa
 
