@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto pb-4" max-width="500">
+  <v-card class="mx-auto pb-4" flat max-width="500">
     <v-list-item two-line>
       <v-list-item-content>
         <v-list-item-title class="headline">{{currentStock}}</v-list-item-title>

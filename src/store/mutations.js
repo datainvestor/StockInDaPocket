@@ -3,6 +3,9 @@ export default {
   updateData(state, payload) {
     state.bigjsondata = payload;
   },
+  updateTipranks(state, payload) {
+    state.tipranks = payload
+  },
   updateLoading(state, payload) {
     state.isLoading = payload;
   },

@@ -9,6 +9,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     bigjsondata: {},
+    tipranks: {},
     isLoading: false,
     currentStock: null,
   },
