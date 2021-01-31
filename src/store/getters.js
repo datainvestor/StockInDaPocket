@@ -13,7 +13,7 @@ export default {
       return state.bigjsondata.Marketbeat
     },
     tipranks: state => {
-      return state.bigjsondata.Tipranks
+      return state.tipranks.Tipranks
     },
     currentStock: state => {
       return state.currentStock

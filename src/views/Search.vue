@@ -1,33 +1,27 @@
 <template>
 <v-container>
- <v-card color="blue lighten-2" dark style="max-width: 1200px; margin: 25px auto;">
-    <v-card-title class="headline blue lighten-3">
-      <span class="white--text">Search for Company Ticker</span>
+ <v-card color="rgb(255, 255, 255, 0)" flat style=" margin: 25px auto;">
+    <v-card-title class="headline">
+      <span>Search for Company Ticker</span>
     </v-card-title>
-    <v-card-text>
-      Explore US companies' tickers. Data delivered by
-      <a
-        class="grey--text text--lighten-3"
-        href="https://finnhub.io"
-        target="_blank"
-      >the Finhub APIs database</a>.
-    </v-card-text>
-    <v-card-text>
+    
       <v-autocomplete
         v-model="model"
         :items="items"
         :loading="isLoading"
         :search-input.sync="search"
-        color="white"
         chips
         clearable
         hide-details
         hide-selected
-        hide-no-data
         item-text="description"
         item-value="symbol"
         label="Type company name..."
         solo
+        color="black"
+        background-color="rgb(255, 255, 255, 0.6)"
+        rounded
+        flat
       >
         <template v-slot:no-data>
           <v-list-item>
@@ -41,7 +35,7 @@
           <v-chip
             v-bind="attr"
             :input-value="selected"
-            color="primary"
+            color="blue"
             class="white--text"
             v-on="on"
           >
@@ -51,7 +45,7 @@
         </template>
         <template v-slot:item="{ item }">
           <v-list-item-avatar
-            color="primary"
+            color="blue"
             class="headline font-weight-light white--text"
           >{{ item.description.charAt(0) }}</v-list-item-avatar>
           <v-list-item-content>
@@ -63,11 +57,19 @@
           </v-list-item-action>
         </template>
       </v-autocomplete>
+   
+    <v-card-text class="pt-1 text-right">
+      Data provided by
+      <a
+        class="blue--text text--darken-3"
+        href="https://finnhub.io"
+        target="_blank"
+      >the Finhub APIs database</a>.
     </v-card-text>
     <v-divider></v-divider>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn :disabled="!model" color="grey darken-3" @click="calculate()">
+      <v-btn :disabled="!model" color="blue" class="text--black" outlined @click="calculate()">
         Submit
       </v-btn>
     </v-card-actions>
@@ -84,15 +86,11 @@ export default {
   data: () => ({
     isLoading: false,
     items: [],
-    model: null,
     search: null,
-    tab: null
+    tab: null,
+    model: null,
   }),
   watch: {
-    model(val) {
-      if (val != null) this.tab = 0;
-      else this.tab = null;
-    },
     search(val) {
       // Items have already been loaded
       if (this.items.length > 0) return;
@@ -114,11 +112,12 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["loadData", "changeStock", "resetData"]),
+    ...mapActions(["loadData", "changeStock", "resetData", "loadTipranks"]),
     calculate () {
       this.resetData({})
       this.changeStock(this.model)
       this.loadData(this.model)
+      this.loadTipranks(this.model)
        this.$router.push("abt")
     }
   }
@@ -126,4 +125,5 @@ export default {
 </script>
 
 <style>
+
 </style>
