@@ -9,7 +9,7 @@
                 <span class="font-weight-bold">{{currentStock}}</span>
                 <span class="font-weight-light"> price</span>
               </div>
-              <v-list-item-title class="headline">{{finviz.Price}} $</v-list-item-title>
+              <v-list-item-title class="headline">{{finviz.Price}} USD</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <div class="float-right font-weight-thin subtitle-2">As of: 2021/01/31</div>
@@ -51,7 +51,7 @@
 
     <v-col md="3" xs="6">
       <v-card flat max-width="250"  class="mx-auto" color="rgb(255, 255, 255, 0)" min-height="110" >
-           <v-img gradient="to  right, rgba(255, 255, 255, 0.3), rgb(255, 255, 255, 0.9)">
+           <v-img gradient="to right, rgba(255, 255, 255, 0.3), rgb(255, 255, 255, 0.9)">
           <v-list-item three-line>
             <v-list-item-content>
               <div class="overline">
