@@ -116,9 +116,9 @@ export default {
     calculate () {
       this.resetData({})
       this.changeStock(this.model)
-      this.loadData(this.model)
-      this.loadTipranks(this.model)
-       this.$router.push("abt")
+      this.loadData(this.model).then(() => (this.loadTipranks(this.model)))
+      
+      this.$router.push("abt")
     }
   }
 };
