@@ -7,7 +7,9 @@
         <Finviz></Finviz>
       </v-col>
       <v-col cols="12" md="7">
-        <Marketbeat></Marketbeat>
+        <SentimentTable></SentimentTable>
+        <Timeline></Timeline>
+        <!-- <Marketbeat></Marketbeat> -->
       </v-col>
     </v-row>
 
@@ -23,9 +25,11 @@
 
 <script>
 import Finviz from "../components/Finviz";
-import Marketbeat from "../components/Marketbeat";
+// import Marketbeat from "../components/Marketbeat";
 import Estimates from "../components/Estimates";
 import TopOverview from "../components/TopOverview"
+import SentimentTable from "../components/MarketSentiment/Table"
+import Timeline from "../components/MarketSentiment/Timeline"
 import { mapGetters } from "vuex";
 
 export default {
@@ -48,9 +52,11 @@ export default {
   },
   components: {
     Finviz,
-    Marketbeat,
+    // Marketbeat,
     Estimates,
-    TopOverview
+    TopOverview,
+    SentimentTable,
+    Timeline
   }
 };
 </script>

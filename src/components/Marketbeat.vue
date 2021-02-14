@@ -2,6 +2,8 @@
   <v-card class="mx-auto">
     <v-row>
       <v-col cols="4">
+
+   
         <v-list dense>
           <v-subheader>Market Sentiment</v-subheader>
           <v-list-item-group v-model="item" color="primary">
